@@ -18,5 +18,33 @@
             </div>
         </div>
     </nav>
+    Authentication Forms
+    <div class="container mt-5" id="authContainer">
+        <!-- Login Form -->
+        <div class="form-container" id="loginForm">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <div class="form-link">
+                    Don't have an account? <a href="javascript:void(0)">Register</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Register Form -->
+        <div class="form-container" id="registerForm" style="display: none;">
+            <h2>Register</h2>
+            <form id="registerForm" >
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <button type="submit">Register</button>
+                <div class="form-link">
+                    Already have an account? <a href="javascript:void(0)">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
