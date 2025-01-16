@@ -1,9 +1,68 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease-in-out;
+}
+ 
+#background-img{
+    height: 100vh;
+    background-image: url(https://img.freepik.com/free-psd/3d-rendering-banking-sales-background_23-2151052665.jpg?t=st=1736993559~exp=1736997159~hmac=c66f23161755763c88a05cf7fa65b6f608c04c6ad97df04569e14101f0903d88&w=996);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.container-fluid img {
+    width: 60px;
+    margin-left: 30px;
+}
+
+.btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+#name {
+    margin-left: -86%;
+}
+
 /* Login & Register Forms */
+#authContainer {
+    position: absolute;
+    top: 180px;
+}
+
+.container {
+    position: absolute;
+    top: 80px;
+    margin-left: 100px;
+}
+
+#expenseTrackerContainer {
+    position: relative;
+    top: 40px;
+    left: 90px;
+    width: 84%;
+    margin-left: 140px;
+}
+.test {
+    position: absolute;
+    top: 60px;
+
+}
+
 .form-container {
     max-width: 420px;
     margin: auto;
     padding: 30px;
-    background-color: white;
     border-radius: 10px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
