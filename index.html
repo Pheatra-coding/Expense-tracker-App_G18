@@ -117,5 +117,30 @@
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTransactionModal"><i class="fa-solid fa-plus"></i> Add Transaction</button>
             </div>
         </div>
+
+              <!-- Transactions Table -->
+              <div class="search-container">
+                <h3 class="mt-4">Transactions</h3>
+                <div class="search">
+                    <input type="text" id="searchTerm" placeholder="Search transactions...">
+                    <button id="searchButton">Search</button>
+                </div>
+                  
+                            
+            </div>
+            <table class="table table-striped table-bordered table-hover" id="transactionsTable">
+                <thead>
+                    <tr>
+                        <th><i class="fa-solid fa-calendar-days"></i> Date</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic transaction rows will be inserted here -->
+                </tbody>
+            </table>
 </body>
 </html>
