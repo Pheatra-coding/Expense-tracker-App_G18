@@ -319,3 +319,89 @@ h2 {
 .btn-danger:hover {
     background-color: #c95460;
 }
+
+/* Modal & Spinner */
+#loadingIndicator {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pie Chart Styling */
+canvas {
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Enhanced Form Styling */
+#transactionForm input,
+#transactionForm select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 14px;
+    transition: border-color 0.3s ease;
+}
+
+#transactionForm input:focus,
+#transactionForm select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Hover effect on table rows */
+.table tbody tr:hover {
+    background-color: #e9f7fe;
+    cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-container .search {
+    margin-top: 28px;
+}
+
+.search-container #searchTerm{
+    outline: none;
+    width: 250px;
+    border: 1px solid rgb(161, 158, 158);
+    border-radius: 6px;
+}
+.search-container .search #searchButton {
+    border: 1px solid rgb(161, 158, 158);
+    background-color: #0056b3;
+    color: white;
+    border-radius: 6px;
+}
+
+/* Add these styles to the table rows for a smooth transition */
+#transactionsTable tbody tr {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  #transactionsTable tbody tr.fade-out {
+    opacity: 0;
+  }
