@@ -215,3 +215,47 @@ body {
     background-color: #3949ab;
     color: #e3f2fd;
 }
+
+.text-center {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 24px 0px;
+}
+
+.balance {
+    background-color: #b6e6e6;
+}
+
+.income {
+    background-color: #9dc0e3;
+}
+
+.expense {
+    background-color: #e8acac;
+}
+
+.card-body {
+    height: 90px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Styling for balance */
+#balance {
+    font-weight: bold;
+    color: #28a745;
+    transition: color 0.3s ease-in-out;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}

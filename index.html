@@ -80,6 +80,42 @@
             <li id="clearAllData"><i class="fa-solid fa-trash"></i> Clear All Data</li>
         </ul>
     </div>
+    
 
+    <div class="container mt-5" id="expenseTrackerContainer" style="display: none;">
+        <h2 class="text-center">Expense Tracker</h2>
+        <!-- Cards for Balance, Income, and Expense -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-center balance">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Balance</h5>
+                        <p id="balance" class="card-text display-4">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                  <div class="card text-center income">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Income</h5>
+                        <p id="totalIncome" class="card-text display-4">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center expense">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Expenses</h5>
+                        <p id="totalExpense" class="card-text display-4">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+               <!-- Add Transaction Button -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTransactionModal"><i class="fa-solid fa-plus"></i> Add Transaction</button>
+            </div>
+        </div>
 </body>
 </html>
