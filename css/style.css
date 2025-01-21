@@ -9,7 +9,7 @@ body {
  
 #background-img{
     height: 100vh;
-    background-image: url(https://img.freepik.com/free-psd/3d-rendering-banking-sales-background_23-2151052665.jpg?t=st=1736993559~exp=1736997159~hmac=c66f23161755763c88a05cf7fa65b6f608c04c6ad97df04569e14101f0903d88&w=996);
+    background-image: url(https://img.freepik.com/free-psd/3d-background-with-podium-golden-coins_23-2150497475.jpg?t=st=1737357535~exp=1737361135~hmac=7366169fd38bc0e584a727c3c4006396fe6201bae06cbcac67be53443710bdc1&w=826);
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -60,7 +60,7 @@ body {
 }
 
 .form-container {
-    max-width: 420px;
+    max-width: 500px;
     margin: auto;
     padding: 30px;
     border-radius: 10px;

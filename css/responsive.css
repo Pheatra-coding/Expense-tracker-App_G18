@@ -1,0 +1,169 @@
+@media (max-width: 768px) {
+    #background-img {
+        background-image: url(https://img.freepik.com/premium-photo/luxury-stage-material-model-3d-rendering_736474-4.jpg?w=360);
+        margin-top: 40px;
+    }
+
+    #expenseTrackerContainer {
+        width: 83%;
+        position: relative;
+        left: -1px;
+        top: 80px;
+    }
+
+    #name {
+        margin-left: 110px;
+        margin-top: -60px;
+    }
+
+    .bg-dark {
+        display: flex;
+        width: 100%;
+        background-color: blue;
+    }
+
+    #sidebar {
+        position: fixed;
+        width: 140px;
+    }
+
+    .user-profile {
+        margin-top: 40px;
+    }
+
+    .user-profile img {
+        width: 70px;
+        height: 70px;
+    }
+
+    
+
+    #sidebar ul {
+        margin-left: -20px;
+    }
+
+    #sidebar ul li {
+        font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+    text-align: center;
+    padding: 8px 15px;
+    }
+
+    .col-md-4 {
+        width: 50%;
+        height: 170px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    #background-img {
+        background-image: url(https://img.freepik.com/premium-photo/luxury-stage-material-model-3d-rendering_736474-4.jpg?w=360);
+        margin-top: 20px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #expenseTrackerContainer {
+        width: 95%;
+        position: relative;
+        left: 0;
+        top: 300px;
+        margin: 0 auto;
+    }
+
+    #sidebar {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        padding: 10px 0;
+        height: 260px;
+        z-index: 1000;
+        background-color: blue;
+
+    }
+
+    .user-profile {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .user-profile img {
+        margin-top: 30px;
+        width: 60px;
+        height: 60px;
+    }
+
+    #sidebar ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #sidebar ul li {
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .table th,
+    .table td {
+        text-align: center;
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    .form-control {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    h1, h2, h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .expense {
+        width: 470px;
+    }
+
+    .col-md-4 {
+        width: 50%;
+        height: 170px;
+    }
+
+    .search-container .search {
+        margin-top: 22px;
+    }
+
+    .search-container #searchTerm{
+        width: 200px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .table {
+        margin-top: 24px;
+    }
+
+    .btn-danger {
+        font-size: 8px;
+        padding: 4px;
+    }
+
+}
