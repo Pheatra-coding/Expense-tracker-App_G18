@@ -97,32 +97,67 @@ function updateCards() {
   updateCharts(totalIncome, totalExpense, balance);
 }
 
-function updateTransactionsTable(transactionsToRender) {
-  const tableBody = document.querySelector("#transactionsTable tbody");
-  tableBody.innerHTML = ""; // Clear existing rows
-
-  transactionsToRender.forEach((transaction, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${transaction.date}</td>
-      <td>${transaction.category}</td>
-      <td>${transaction.type}</td>
-      <td>${transaction.amount} $</td>
-      <td>
-        <button class="btn btn-danger delete-btn" data-id="${transaction.id}"><i class="fa-solid fa-trash"></i> Delete</button>
-      </td>
-    `;
-    tableBody.appendChild(row);
-  });
-
-  // Add event listeners for delete buttons
-  const deleteButtons = document.querySelectorAll(".delete-btn");
-  deleteButtons.forEach(button => {
-    button.addEventListener("click", (event) => {
-      const transactionId = event.target.dataset.id;
-      deleteTransaction(transactionId);
+document.querySelectorAll('.filter-icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+        const filterRow = document.getElementById('filterRow');
+        filterRow.style.display = filterRow.style.display === 'none' ? 'table-row' : 'none';
     });
-  });
+});
+
+function updateTransactionsTable(transactionsToRender) {
+    const tableBody = document.querySelector("#transactionsTable tbody");
+    tableBody.innerHTML = "";
+
+    transactionsToRender.forEach(transaction => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${transaction.date}</td>
+            <td>${transaction.category}</td>
+            <td>${transaction.type}</td>
+            <td>${transaction.amount.toLocaleString()} $</td>
+            <td>
+                <button class="btn btn-danger delete-btn" data-id="${transaction.id}"><i class="fa-solid fa-trash"></i></button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    document.querySelectorAll(".delete-btn").forEach(button => {
+        button.addEventListener("click", (event) => {
+            const transactionId = event.currentTarget.getAttribute('data-id');
+            deleteTransaction(transactionId);
+        });
+    });
+}
+
+["filterDate", "filterCategory", "filterType", "filterAmount"].forEach(id => {
+    document.querySelector(`#${id}`).addEventListener("input", debounce(() => {
+        const filteredTransactions = filterTransactions();
+        updateTransactionsTable(filteredTransactions);
+    }, 300));
+});
+
+function filterTransactions() {
+    const dateFilter = document.querySelector("#filterDate").value;
+    const categoryFilter = document.querySelector("#filterCategory").value.toLowerCase();
+    const typeFilter = document.querySelector("#filterType").value.toLowerCase();
+    const amountFilter = document.querySelector("#filterAmount").value;
+
+    return transactions.filter(transaction => (
+        (!dateFilter || transaction.date === dateFilter) &&
+        (!categoryFilter || transaction.category.toLowerCase().includes(categoryFilter)) &&
+        (!typeFilter || transaction.type.toLowerCase() === typeFilter) &&
+        (!amountFilter || transaction.amount == amountFilter)
+    ));
+}
+
+function debounce(func, delay) {
+    let timeout;
+    return function() {
+        const context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+    };
 }
 
 document.getElementById("transactionForm").addEventListener("submit", (event) => {
