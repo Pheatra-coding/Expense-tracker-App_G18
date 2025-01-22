@@ -160,6 +160,62 @@ function debounce(func, delay) {
   };
 }
 
+document.getElementById("transactionForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const transactionType = document.getElementById("transactionType").value;
+  const category = document.getElementById("category").value;
+  const amount = parseFloat(document.getElementById("amount").value);
+  const date = document.getElementById("date").value;
+
+  // Get the current user ID
+  const user = getAuth().currentUser;
+
+  if (user) {
+    // Add the new transaction to the Firebase database
+    const transactionRef = ref(database, 'transactions/' + user.uid);
+    const newTransactionKey = push(transactionRef).key;
+
+    const transactionData = {
+      id: newTransactionKey, // Add an ID to identify the transaction
+      type: transactionType,
+      category: category,
+      amount: amount,
+      date: date
+    };
+
+    set(ref(database, 'transactions/' + user.uid + '/' + newTransactionKey), transactionData)
+      .then(() => {
+        // After saving to Firebase, update the UI
+        transactions.push(transactionData);
+        updateCards();
+        updateTransactionsTable(transactions);
+
+        // Clear the form inputs
+        transactionForm.reset();
+
+
+        // Show SweetAlert success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Transaction Added',
+          text: 'Your transaction has been successfully added!',
+          timer: 2000,
+          showConfirmButton: false
+        });
+      })
+      .catch((error) => {
+        // Show SweetAlert error message
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to add transaction. Please try again.',
+        });
+      });
+  }
+});
+
+
   // Define deleteTransaction function
 function deleteTransaction(transactionId) {
     const user = getAuth().currentUser;
