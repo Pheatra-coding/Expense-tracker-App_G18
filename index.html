@@ -86,6 +86,16 @@
     <div class="container mt-5" id="expenseTrackerContainer" style="display: none;">
         <h2 class="text-center">Expense Tracker</h2>
         <!-- Cards for Balance, Income, and Expense -->
+        <div class="row mt-4 text-center summary-section">
+            <div class="col-md-6 mx-auto">
+                <h5 class="text-secondary">View Summary</h5>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary summary-btn" data-period="daily">Daily</button>
+                    <button type="button" class="btn btn-primary summary-btn" data-period="weekly">Weekly</button>
+                    <button type="button" class="btn btn-primary summary-btn" data-period="monthly">Monthly</button>
+                </div>
+            </div>
+        </div>
         <div class="row mt-4">
             <div class="col-md-4">
                 <div class="card text-center balance">

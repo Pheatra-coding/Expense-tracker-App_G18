@@ -405,3 +405,21 @@ canvas {
   #transactionsTable tbody tr.fade-out {
     opacity: 0;
   }
+
+.summary-section {
+    position: relative;
+    top: -20px;
+    margin-bottom: -70px;
+}
+
+.text-secondary {
+    margin-left: -80px;
+}
+
+.btn-group {
+    margin-top: -30px;
+}
+
+.up {
+    margin-top: -190px;
+}

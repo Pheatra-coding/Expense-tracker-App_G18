@@ -75,27 +75,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let transactions = [];
 
-function updateCards() {
+document.querySelectorAll('.summary-btn').forEach(button => {
+  button.addEventListener('click', function() {
+      updateCards(this.getAttribute('data-period'));
+  });
+});
+
+function updateCards(period = 'all') {
   let totalIncome = 0;
   let totalExpense = 0;
+  const today = new Date();
 
   transactions.forEach(transaction => {
-    if (transaction.type === 'income') {
-      totalIncome += transaction.amount;
-    } else {
-      totalExpense += transaction.amount;
-    }
+      const transactionDate = new Date(transaction.date);
+      let withinPeriod = true;
+
+      if (period === 'daily' && transactionDate.toDateString() !== today.toDateString()) {
+          withinPeriod = false;
+      } else if (period === 'weekly') {
+          const weekAgo = new Date();
+          weekAgo.setDate(today.getDate() - 7);
+          withinPeriod = transactionDate >= weekAgo;
+      } else if (period === 'monthly') {
+          const monthAgo = new Date();
+          monthAgo.setMonth(today.getMonth() - 1);
+          withinPeriod = transactionDate >= monthAgo;
+      }
+
+      if (withinPeriod) {
+          if (transaction.type === 'income') {
+              totalIncome += transaction.amount;
+          } else {
+              totalExpense += transaction.amount;
+          }
+      }
   });
 
   const balance = totalIncome - totalExpense;
 
-  // Update the card values
-  document.getElementById("balance").textContent = balance;
-  document.getElementById("totalIncome").textContent = totalIncome;
-  document.getElementById("totalExpense").textContent = totalExpense;
+  document.getElementById("balance").textContent = balance.toLocaleString();
+  document.getElementById("totalIncome").textContent = totalIncome.toLocaleString();
+  document.getElementById("totalExpense").textContent = totalExpense.toLocaleString();
 
   updateCharts(totalIncome, totalExpense, balance);
 }
+
 
 document.querySelectorAll('.filter-icon').forEach(icon => {
     icon.addEventListener('click', () => {
