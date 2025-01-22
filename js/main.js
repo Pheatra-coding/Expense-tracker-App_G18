@@ -97,88 +97,68 @@ function updateCards() {
   updateCharts(totalIncome, totalExpense, balance);
 }
 
+document.querySelectorAll('.filter-icon').forEach(icon => {
+  icon.addEventListener('click', () => {
+      const filterRow = document.getElementById('filterRow');
+      filterRow.style.display = filterRow.style.display === 'none' ? 'table-row' : 'none';
+  });
+});
+
 function updateTransactionsTable(transactionsToRender) {
   const tableBody = document.querySelector("#transactionsTable tbody");
-  tableBody.innerHTML = ""; // Clear existing rows
+  tableBody.innerHTML = "";
 
-  transactionsToRender.forEach((transaction, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${transaction.date}</td>
-      <td>${transaction.category}</td>
-      <td>${transaction.type}</td>
-      <td>${transaction.amount} $</td>
-      <td>
-        <button class="btn btn-danger delete-btn" data-id="${transaction.id}"><i class="fa-solid fa-trash"></i> Delete</button>
-      </td>
-    `;
-    tableBody.appendChild(row);
+  transactionsToRender.forEach(transaction => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td>${transaction.date}</td>
+          <td>${transaction.category}</td>
+          <td>${transaction.type}</td>
+          <td>${transaction.amount.toLocaleString()} $</td>
+          <td>
+              <button class="btn btn-danger delete-btn" data-id="${transaction.id}"><i class="fa-solid fa-trash"></i></button>
+          </td>
+      `;
+      tableBody.appendChild(row);
   });
 
-  // Add event listeners for delete buttons
-  const deleteButtons = document.querySelectorAll(".delete-btn");
-  deleteButtons.forEach(button => {
-    button.addEventListener("click", (event) => {
-      const transactionId = event.target.dataset.id;
-      deleteTransaction(transactionId);
-    });
+  document.querySelectorAll(".delete-btn").forEach(button => {
+      button.addEventListener("click", (event) => {
+          const transactionId = event.currentTarget.getAttribute('data-id');
+          deleteTransaction(transactionId);
+      });
   });
 }
 
-document.getElementById("transactionForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-  
-    const transactionType = document.getElementById("transactionType").value;
-    const category = document.getElementById("category").value;
-    const amount = parseFloat(document.getElementById("amount").value);
-    const date = document.getElementById("date").value;
-  
-    // Get the current user ID
-    const user = getAuth().currentUser;
-  
-    if (user) {
-      // Add the new transaction to the Firebase database
-      const transactionRef = ref(database, 'transactions/' + user.uid);
-      const newTransactionKey = push(transactionRef).key;
-  
-      const transactionData = {
-        id: newTransactionKey, // Add an ID to identify the transaction
-        type: transactionType,
-        category: category,
-        amount: amount,
-        date: date
-      };
-  
-      set(ref(database, 'transactions/' + user.uid + '/' + newTransactionKey), transactionData)
-        .then(() => {
-          // After saving to Firebase, update the UI
-          transactions.push(transactionData);
-          updateCards();
-          updateTransactionsTable(transactions);
-  
-          // Clear the form inputs
-          transactionForm.reset();
-  
-  
-          // Show SweetAlert success message
-          Swal.fire({
-            icon: 'success',
-            title: 'Transaction Added',
-            text: 'Your transaction has been successfully added!',
-            timer: 2000,
-            showConfirmButton: false
-          });
-        })
-        .catch((error) => {
-          // Show SweetAlert error message
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Failed to add transaction. Please try again.',
-          });
-        });
-    }
-  });
+["filterDate", "filterCategory", "filterType", "filterAmount"].forEach(id => {
+  document.querySelector(`#${id}`).addEventListener("input", debounce(() => {
+      const filteredTransactions = filterTransactions();
+      updateTransactionsTable(filteredTransactions);
+  }, 300));
+});
+
+function filterTransactions() {
+  const dateFilter = document.querySelector("#filterDate").value;
+  const categoryFilter = document.querySelector("#filterCategory").value.toLowerCase();
+  const typeFilter = document.querySelector("#filterType").value.toLowerCase();
+  const amountFilter = document.querySelector("#filterAmount").value;
+
+  return transactions.filter(transaction => (
+      (!dateFilter || transaction.date === dateFilter) &&
+      (!categoryFilter || transaction.category.toLowerCase().includes(categoryFilter)) &&
+      (!typeFilter || transaction.type.toLowerCase() === typeFilter) &&
+      (!amountFilter || transaction.amount == amountFilter)
+  ));
+}
+
+function debounce(func, delay) {
+  let timeout;
+  return function() {
+      const context = this, args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
 
   // Define deleteTransaction function
 function deleteTransaction(transactionId) {
