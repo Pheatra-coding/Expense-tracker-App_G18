@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 880px) {
     #background-img {
         background-image: url(https://img.freepik.com/premium-photo/luxury-stage-material-model-3d-rendering_736474-4.jpg?w=360);
         margin-top: 40px;
@@ -62,7 +62,7 @@
 
 @media (max-width: 480px) {
     #background-img {
-        background-image: url(https://img.freepik.com/premium-photo/luxury-stage-material-model-3d-rendering_736474-4.jpg?w=360);
+        background-image: url(https://img.freepik.com/free-photo/vertical-graphic-illustration-blue-purple-circles-light-blue-background_181624-27651.jpg?t=st=1737547556~exp=1737551156~hmac=e442982f3a9996de78adb6c24dda47aac9dce41a3a343215804566c17f847ba1&w=360);
         margin-top: 20px;
         background-size: cover;
         background-position: center;
@@ -81,8 +81,7 @@
         width: 100%;
         height: auto;
         bottom: 0;
-        padding: 10px 0;
-        height: 260px;
+        height: 220px;
         z-index: 1000;
         background-color: blue;
 
@@ -94,16 +93,16 @@
     }
 
     .user-profile img {
-        margin-top: 30px;
-        width: 60px;
-        height: 60px;
+        margin-top: -10px;
+        width: 70px;
+        height: 70px;
     }
 
     #sidebar ul {
         display: flex;
         justify-content: space-around;
         padding: 0;
-        margin: 0;
+        margin-top: -14px;
         list-style: none;
     }
 
@@ -139,7 +138,7 @@
     }
 
     .expense {
-        width: 470px;
+        width: 380px;
     }
 
     .col-md-4 {
@@ -164,6 +163,10 @@
     .btn-danger {
         font-size: 8px;
         padding: 4px;
+    } 
+
+    #authContainer {
+        margin-left: 2px;
     }
 
 }
