@@ -140,7 +140,7 @@ function updateTransactionsTable(transactionsToRender) {
             <td>${transaction.type}</td>
             <td>${transaction.amount.toLocaleString()} $</td>
             <td>
-                <button class="btn btn-danger delete-btn" data-id="${transaction.id}"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn btn-danger delete-btn" data-id="${transaction.id}"><i class="fa-solid fa-trash"></i> Delete</button>
             </td>
         `;
         tableBody.appendChild(row);

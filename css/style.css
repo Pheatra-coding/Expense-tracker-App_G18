@@ -49,9 +49,9 @@ body {
 #expenseTrackerContainer {
     position: relative;
     top: 40px;
-    left: 90px;
+    left: 60px;
     width: 84%;
-    margin-left: 140px;
+    margin-left: 180px;
 }
 .test {
     position: absolute;
